@@ -1,0 +1,112 @@
+[
+  {
+    "scene_id": 1,
+    "duration": 5,
+    "fallback_prompt": "A sunny garden scene with blooming flowers and vibrant greenery. In the foreground, a cheerful orange cat sits, gazing intently at a small, light brown mouse. The sun casts soft, warm light over the scene, with a clear blue sky above and a few fluffy clouds lazily drifting. The overall mood is playful and serene, reminiscent of classic children's storybook illustrations, characterized by bright colors and a whimsical atmosphere.",
+    "background": {
+      "image": "village_garden.jpg"
+    },
+    "environment_objects": [
+      {
+        "id": "butterfly_flitting",
+        "image": "flying_bird.png",
+        "position": { "x": 300, "y": 120 },
+        "resolution_resize": [50, 50],
+        "motion": "float"
+      }
+    ],
+    "characters": [
+      {
+        "id": "cat",
+        "image": "cat_sitting.png",
+        "position": { "x": 640, "y": 500 },
+        "resolution_resize": [100, 100],
+        "motion": "idle"
+      },
+      {
+        "id": "mouse",
+        "image": "rat.png",
+        "position": { "x": 600, "y": 500 },
+        "resolution_resize": [50, 50],
+        "motion": "idle"
+      }
+    ],
+    "dialogue": [],
+    "text_overlays": []
+  },
+  {
+    "scene_id": 2,
+    "duration": 5,
+    "fallback_prompt": "The focus shifts towards the cat, which smiles widely and presents a piece of cheese towards the mouse. The backdrop features the sunny garden, filled with flowers and lush grass. The cat’s joyful expression is highlighted, as sunlight glints off the cheese, adding warmth to the scene. The overall atmosphere is inviting and whimsical, filled with bright colors and a childlike wonder.",
+    "background": {
+      "image": "village_garden.jpg"
+    },
+    "characters": [
+      {
+        "id": "cat",
+        "image": "cat_sitting.png",
+        "position": { "x": 640, "y": 500 },
+        "resolution_resize": [100, 100],
+        "motion": "idle"
+      },
+      {
+        "id": "mouse",
+        "image": "rat.png",
+        "position": { "x": 600, "y": 500 },
+        "resolution_resize": [50, 50],
+        "motion": "idle"
+      }
+    ],
+    "text_overlays": []
+  },
+  {
+    "scene_id": 3,
+    "duration": 5,
+    "fallback_prompt": "The little mouse eagerly nibbles on the cheese offered by the cat. The scene captures the innocence of their interaction, with bright flowers surrounding them. The cat looks pleased, and the mouse seems delighted. Sunlight brightens the scene, enhancing the cheerful ambiance and creating a sense of friendship and harmony. The artistic style is reminiscent of vibrant children’s cartoons, full of life and color.",
+    "background": {
+      "image": "village_garden.jpg"
+    },
+    "characters": [
+      {
+        "id": "cat",
+        "image": "cat_sitting.png",
+        "position": { "x": 600, "y": 500 },
+        "resolution_resize": [100, 100],
+        "motion": "idle"
+      },
+      {
+        "id": "mouse",
+        "image": "rat.png",
+        "position": { "x": 650, "y": 500 },
+        "resolution_resize": [50, 50],
+        "motion": "idle"
+      }
+    ],
+    "text_overlays": []
+  },
+  {
+    "scene_id": 4,
+    "duration": 5,
+    "fallback_prompt": "The cat and mouse play together joyfully in the sunny garden. The scene captures their delight, with the cat gently rolling over and the mouse playfully chasing after it. Sunlight bathes the entire scene in warmth, invigorating the vibrant colors of the flowers and grass. A light breeze rustles the leaves as the playful interaction deepens their friendship under the bright blue sky, creating a magical and heartwarming atmosphere.",
+    "background": {
+      "image": "village_garden.jpg"
+    },
+    "characters": [
+      {
+        "id": "cat",
+        "image": "cat_sitting.png",
+        "position": { "x": 640, "y": 500 },
+        "resolution_resize": [100, 100],
+        "motion": "jump"
+      },
+      {
+        "id": "mouse",
+        "image": "rat.png",
+        "position": { "x": 700, "y": 500 },
+        "resolution_resize": [50, 50],
+        "motion": "jump"
+      }
+    ],
+    "text_overlays": []
+  }
+]
