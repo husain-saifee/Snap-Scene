@@ -10,7 +10,7 @@ VIDEO_DIR = BASE_DIR / "backend/static/videos"
 
 FFMPEG = r"C:\Users\KIIT\Downloads\ffmpeg-2026-01-22-git-4561fc5e48-full_build\ffmpeg-2026-01-22-git-4561fc5e48-full_build\bin\ffmpeg.exe"
 
-FPS = 10           # 👈 slow = smooth anime
+FPS = 10           
 MODEL = "rife-anime"
 
 def interpolate():
@@ -33,10 +33,10 @@ def interpolate():
         "-i", str(SCENE_DIR),
         "-o", str(FRAME_DIR),
         "-m", MODEL,
-        "-g", "-1"      # CPU only
+        "-g", "-1"     
     ], check=True)
 
-    print("✅ RIFE interpolation complete")
+    print(" RIFE interpolation complete")
 
 
 def build_video():
@@ -53,7 +53,7 @@ def build_video():
         str(output)
     ], check=True)
 
-    print("🎬 Video created:", output)
+    print(" Video created:", output)
 
 
 if __name__ == "__main__":
