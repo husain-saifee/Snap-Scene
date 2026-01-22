@@ -1,0 +1,10 @@
+import json
+from backend.services.scene_compositor import compose_scene
+
+with open("backend/workers/image_gen.json") as f:
+    scene = json.load(f)
+
+img = compose_scene(scene)
+img.save("backend/generated/scenes/scene_1.png")
+
+print("✅ Scene generated")

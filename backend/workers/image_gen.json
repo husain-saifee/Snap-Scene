@@ -1,0 +1,90 @@
+[
+  {
+    "scene_id": 1,
+    "duration": 4,
+    "fallback_prompt": "A sunny garden, with vibrant flowers and tall grass, where a cat spots a little mouse.",
+    "background": { "image": "village_garden.jpg" },
+    "characters": [
+      {
+        "id": "cat",
+        "image": "cat_sitting.png",
+        "start_position": { "x": 150, "y": 500 },
+        "end_position": { "x": 400, "y": 500 },
+        "motion": "walk"
+      },
+      {
+        "id": "mouse",
+        "image": "rat.png",
+        "start_position": { "x": 800, "y": 500 },
+        "end_position": { "x": 600, "y": 500 },
+        "motion": "idle"
+      }
+    ]
+  },
+  {
+    "scene_id": 2,
+    "duration": 4,
+    "fallback_prompt": "The cat smiles and offers a piece of cheese to the mouse in the sunny garden.",
+    "background": { "image": "village_garden.jpg" },
+    "characters": [
+      {
+        "id": "cat",
+        "image": "cat_sitting.png",
+        "start_position": { "x": 400, "y": 500 },
+        "end_position": { "x": 500, "y": 500 },
+        "motion": "idle"
+      },
+      {
+        "id": "mouse",
+        "image": "rat.png",
+        "start_position": { "x": 600, "y": 500 },
+        "end_position": { "x": 500, "y": 500 },
+        "motion": "walk"
+      }
+    ]
+  },
+  {
+    "scene_id": 3,
+    "duration": 5,
+    "fallback_prompt": "The mouse nibbles happily on the cheese in the sunny garden, looking at the cat with joy.",
+    "background": { "image": "village_garden.jpg" },
+    "characters": [
+      {
+        "id": "cat",
+        "image": "cat_sitting.png",
+        "start_position": { "x": 500, "y": 500 },
+        "end_position": { "x": 500, "y": 500 },
+        "motion": "idle"
+      },
+      {
+        "id": "mouse",
+        "image": "rat.png",
+        "start_position": { "x": 500, "y": 500 },
+        "end_position": { "x": 500, "y": 500 },
+        "motion": "idle"
+      }
+    ]
+  },
+  {
+    "scene_id": 4,
+    "duration": 5,
+    "fallback_prompt": "The cat and the mouse frolic together under the bright blue sky, becoming best friends.",
+    "background": { "image": "village_garden.jpg" },
+    "characters": [
+      {
+        "id": "cat",
+        "image": "cat_sitting.png",
+        "start_position": { "x": 500, "y": 500 },
+        "end_position": { "x": 200, "y": 400 },
+        "motion": "jump"
+      },
+      {
+        "id": "mouse",
+        "image": "rat.png",
+        "start_position": { "x": 500, "y": 500 },
+        "end_position": { "x": 800, "y": 400 },
+        "motion": "jump"
+      }
+    ]
+  }
+]
