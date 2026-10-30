@@ -1,6 +1,9 @@
 from openai import OpenAI
 import os
+from pathlib import Path
 from dotenv import load_dotenv
+
+load_dotenv()
 
 # --- UPDATED PROMPT WITH MOTION PATHS ---
 txt_prompt = '''You are an expert Animation Director and JSON Architect. Your task is to take a written story and convert it into a structured JSON file for a 2D animation engine.
@@ -50,25 +53,25 @@ Please return ONLY valid JSON.
 '''
 
 # --- FILE LOADING ---
-# Adjusted paths based on your previous messages
-base_path = "C:\\Users\\KIIT\\Documents\\ai-video-generator"
-assets_path = os.path.join(base_path, "backend", "assets_structure.md")
-story_path = os.path.join(base_path, "backend", "story.txt")
+BASE_DIR = Path(__file__).resolve().parents[2]
+assets_path = BASE_DIR / "backend" / "assets_structure.md"
+story_path = BASE_DIR / "backend" / "story.txt"
 
 try:
-    with open(assets_path, "r") as f:
+    with open(assets_path, "r", encoding="utf-8") as f:
         img_data = f.read()
-    with open(story_path, "r") as f:
-        story_content = f.read()
-except FileNotFoundError as e:
-    print(f"❌ Error loading files: {e}")
+except FileNotFoundError:
     img_data = ""
+
+try:
+    with open(story_path, "r", encoding="utf-8") as f:
+        story_content = f.read()
+except FileNotFoundError:
     story_content = "A boy named raj walks in park"
 
 final_prompt = f"{txt_prompt}\nSTORY:\n{story_content}\nAVAILABLE IMAGES:\n{img_data}"
 
 # --- OPENAI API CALL ---
-load_dotenv()
 try:
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
@@ -89,10 +92,10 @@ try:
         raw_content = raw_content.split("```")[1].split("```")[0].strip()
 
     # Save to the workers folder
-    output_path = os.path.join(base_path, "backend", "workers", "image_gen.json")
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    output_path = BASE_DIR / "backend" / "workers" / "image_gen.json"
+    output_path.parent.mkdir(parents=True, exist_ok=True)
     
-    with open(output_path, "w") as f:
+    with open(output_path, "w", encoding="utf-8") as f:
         f.write(raw_content)
         
     print(f"✅ Success! New motion-enabled JSON saved to: {output_path}")

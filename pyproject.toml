@@ -1,7 +1,39 @@
 [project]
-name = "ai-video-generator"
+name = "snap-scene"
 version = "0.1.0"
-description = "Add your description here"
+description = "AI-powered text-to-animated-video generation engine combining LLM scene planning, 2D motion synthesis, RIFE neural frame interpolation, and Stable Diffusion."
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = []
+authors = [
+    { name = "Husain Saifee", email = "hussainzsaifee@gmail.com" }
+]
+keywords = [
+    "text-to-video",
+    "ai-video-generation",
+    "stable-diffusion",
+    "rife",
+    "neural-frame-interpolation",
+    "generative-ai",
+    "story-generator",
+    "animation",
+    "computer-vision",
+    "opencv"
+]
+dependencies = [
+    "openai>=1.20.0",
+    "python-dotenv>=1.0.1",
+    "opencv-python>=4.8.0",
+    "Pillow>=10.2.0",
+    "requests>=2.31.0",
+    "pydantic>=2.6.0",
+    "numpy>=1.24.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/husain-saifee/Snap-Scene"
+Repository = "https://github.com/husain-saifee/Snap-Scene"
+Issues = "https://github.com/husain-saifee/Snap-Scene/issues"
+
+[tool.pytest.ini_options]
+testpaths = ["backend/tests"]
+python_files = ["test_*.py"]

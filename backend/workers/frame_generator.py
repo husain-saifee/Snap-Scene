@@ -1,66 +1,71 @@
-import requests
-import time
-from pathlib import Path
 import base64
+import os
+from pathlib import Path
+import time
+import requests
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # ---------------- CONFIG ---------------- #
-API_KEY = "<aiml_d3387aa2-cf08-4a50-b630-c815c1c27759>"
-BASE_URL = "https://api.aimlapi.com/v2"
+BASE_DIR = Path(__file__).resolve().parents[2]
+API_KEY = os.getenv("AIML_API_KEY", "")
+BASE_URL = os.getenv("AIML_BASE_URL", "https://api.aimlapi.com/v2")
 
-IMAGE_PATH = Path(
-    r"C:\Users\KIIT\Documents\ai-video-generator\backend\static\previews\scene_1.png"
-)
-
+IMAGE_PATH = BASE_DIR / "backend" / "static" / "previews" / "scene_1.png"
 # ---------------------------------------- #
 
-# Read and encode image
-with open(IMAGE_PATH, "rb") as f:
-    base64_image = base64.b64encode(f.read()).decode("utf-8")
 
-# Proper data URL
-image_data_url = f"data:image/png;base64,{base64_image}"
+def encode_image(image_path: Path) -> str:
+    with open(image_path, "rb") as f:
+        return base64.b64encode(f.read()).decode("utf-8")
 
 
-def generate_video():
+def generate_video(image_path: Path = IMAGE_PATH, prompt: str = "A character in motion"):
+    if not API_KEY:
+        raise ValueError("AIML_API_KEY environment variable is not set")
+
+    if not image_path.exists():
+        raise FileNotFoundError(f"Source preview image not found: {image_path}")
+
+    base64_image = encode_image(image_path)
+    image_data_url = f"data:image/png;base64,{base64_image}"
+
     url = f"{BASE_URL}/generate/video/bytedance/generation"
-    
     headers = {
         "Authorization": f"Bearer {API_KEY}",
         "Content-Type": "application/json"
     }
-
     payload = {
         "model": "bytedance/seedance-1-0-lite-i2v",
-        "prompt": "Mona Lisa puts on glasses with her hands.",
-        "image": image_data_url,   # ✅ correct
+        "prompt": prompt,
+        "image": image_data_url,
         "duration": 5
     }
 
     response = requests.post(url, json=payload, headers=headers)
-
     if response.status_code >= 400:
-        print("Error:", response.text)
+        print("Error from API:", response.text)
         return None
 
     return response.json()
 
 
-def get_video(gen_id):
+def get_video(gen_id: str):
     url = f"{BASE_URL}/generate/video/bytedance/generation"
-
     headers = {
         "Authorization": f"Bearer {API_KEY}"
     }
-
-    params = {
-        "generation_id": gen_id
-    }
-
+    params = {"generation_id": gen_id}
     response = requests.get(url, params=params, headers=headers)
     return response.json()
 
 
 def main():
+    if not API_KEY:
+        print("AIML_API_KEY is not set in environment or .env. Skipping cloud I2V generation.")
+        return
+
     gen_response = generate_video()
     if not gen_response:
         return
@@ -82,7 +87,7 @@ def main():
             print("Done:", result)
             return
 
-    print("Timeout reached")
+    print("Timeout reached waiting for generation.")
 
 
 if __name__ == "__main__":

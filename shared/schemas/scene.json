@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SnapSceneAnimationPlan",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["scene_id", "duration", "fallback_prompt", "background", "characters"],
+    "properties": {
+      "scene_id": { "type": "integer" },
+      "duration": { "type": "number", "minimum": 1 },
+      "fallback_prompt": { "type": "string" },
+      "background": {
+        "type": "object",
+        "required": ["image"],
+        "properties": {
+          "image": { "type": "string" }
+        }
+      },
+      "characters": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["id", "image", "start_position", "end_position", "motion"],
+          "properties": {
+            "id": { "type": "string" },
+            "image": { "type": "string" },
+            "start_position": {
+              "type": "object",
+              "required": ["x", "y"],
+              "properties": {
+                "x": { "type": "integer" },
+                "y": { "type": "integer" }
+              }
+            },
+            "end_position": {
+              "type": "object",
+              "required": ["x", "y"],
+              "properties": {
+                "x": { "type": "integer" },
+                "y": { "type": "integer" }
+              }
+            },
+            "motion": {
+              "type": "string",
+              "enum": ["walk", "jump", "idle"]
+            }
+          }
+        }
+      },
+      "environment_objects": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}
